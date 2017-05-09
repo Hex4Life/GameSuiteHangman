@@ -45,5 +45,6 @@ public class PuntTest {
 	public void equals_moet_false_teruggeven_als_punt_verschillende_y_coordinaat_heeft(){
 		Punt puntAnder = new Punt(xCoordinaat, yCoordinaat-1);
 		assertFalse(punt.equals(puntAnder));
+		
 	}
 }
