@@ -61,7 +61,7 @@ public class Driehoek extends Vorm{
 			lijsthoekpunten2.add(driehoek.getHoekPunt3());
 			
 			
-			if(lijsthoekpunten1.containsAll(lijsthoekpunten2)&&lijsthoekpunten2.contains(lijsthoekpunten1)){
+			if(lijsthoekpunten1.containsAll(lijsthoekpunten2)&&lijsthoekpunten2.containsAll(lijsthoekpunten1)){
 				return true;
 			}
 			
@@ -71,6 +71,9 @@ public class Driehoek extends Vorm{
 		return false;
 	}
 	
+	public String toString() {
+		return "Driehoek: hoekpunt1: " + this.hoekPunt1.toString() + " - hoekpunt2: " + this.hoekPunt2.toString() + " hoekpunt3: " + this.hoekPunt3.toString();
+	}
 	
 	
 	
