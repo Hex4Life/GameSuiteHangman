@@ -38,5 +38,9 @@ public class Punt {
 		if(resultX && resultY) return true;
 		return false;
 	}
-
+	
+	public String toString(){
+		return "(" + getX() + ", " + getY() + ")";
+	}
+	
 }
