@@ -26,16 +26,13 @@ public class Punt {
 		this.y = y;
 	}
 	
-	public boolean equals(Punt punt){
-		if(punt == null)return false;
+	public boolean equals(Object o){
+		if(o instanceof Punt){
+			Punt punt = (Punt)o;
+			
+			return this.getX() == punt.getX() && this.getY() == punt.getY(); 
+		}
 		
-		boolean resultX = false;
-		boolean resultY = false;
-		
-		if(this.getX() == punt.getX()) resultX = true;
-		if(this.getY() == punt.getY()) resultY = true;
-		
-		if(resultX && resultY) return true;
 		return false;
 	}
 	

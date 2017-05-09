@@ -31,16 +31,25 @@ public class Speler {
 	public int getScore() {
 		return score;
 	}
+	
 	public int addToScore(int score){
 		this.setScore(this.getScore()+score);
 		return this.getScore();
 		
 	}
-	public boolean equals(Speler speler){
-		if (speler == null) return false;
-		 if ( this.getScore() == speler.getScore() && this.getNaam() == speler.getNaam()) return true;
+	
+	@Override
+	public boolean equals(Object o){
+		if(o instanceof Speler){
+			Speler s = (Speler)o;
+			
+			return s.getNaam().equals(this.getNaam()) && s.getScore() == this.getScore();
+		}
+		
 		return false;
 	}
+	
+	@Override
 	public String toString(){
 		return "Naam: " + this.getNaam() + " Score: "+this.getScore();
 	}

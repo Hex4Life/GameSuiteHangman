@@ -1,8 +1,9 @@
 package domain;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,17 +38,17 @@ public class CirkelTest {
 	
 	@Test(expected = DomainException.class)
 	public void Cirkel_aanmaken_met_middelpunt_null_gooit_exception() {
-		Cirkel cirkel = new Cirkel(null, radius1);
+		cirkel1 = new Cirkel(null, radius1);
 	}
 	
 	@Test(expected = DomainException.class)
 	public void Cirkel_aanmaken_met_straal_kleiner_dan_nul_gooit_exception() {
-		Cirkel cirkel = new Cirkel(punt1, -5);
+		cirkel1 = new Cirkel(punt1, -5);
 	}
 	
 	@Test(expected = DomainException.class)
 	public void Cirkel_aanmaken_met_straal_nul_gooit_exception() {
-		Cirkel cirkel = new Cirkel(punt1, 0);
+		cirkel1 = new Cirkel(punt1, 0);
 	}
 	
 	@Test
