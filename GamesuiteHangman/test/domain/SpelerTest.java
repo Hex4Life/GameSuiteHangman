@@ -1,4 +1,5 @@
 package domain;
+import domain.Speler;
 
 import static org.junit.Assert.*;
 
