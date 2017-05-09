@@ -24,6 +24,7 @@ public class LijnStuk extends Vorm{
 		return eind;
 	}
 
+	@Override
 	public boolean equals(Object o){
 		if(o instanceof LijnStuk){
 			LijnStuk lijnstuk = (LijnStuk)o;
@@ -34,7 +35,8 @@ public class LijnStuk extends Vorm{
 		return false;
 	}
 
-	public String tostring(){
+	@Override
+	public String toString(){
 		return "Lijn: startpunt: " + start + " - eindpunt: " + eind;
 	}
 }

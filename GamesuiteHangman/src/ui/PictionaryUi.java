@@ -4,6 +4,8 @@ import javax.swing.JOptionPane;
 
 import domain.Cirkel;
 import domain.DomainException;
+import domain.Driehoek;
+import domain.LijnStuk;
 import domain.Punt;
 import domain.Rechthoek;
 import domain.Speler;
@@ -28,7 +30,58 @@ public class PictionaryUi {
 			Rechthoek rechthoek = inputRechthoek();
 			if(rechthoek == null) return;
 			JOptionPane.showMessageDialog(null, "U heeft een correcte rechthoek aangemaakt: " + rechthoek, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
+		} else if(keuze.equals("Driehoek")){
+			Driehoek driehoek = inputDriehoek();
+			if(driehoek == null) return;
+			JOptionPane.showMessageDialog(null, "U heeft een correcte driehoek aangemaakt: " + driehoek, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
+		} else if(keuze.equals("Lijnstuk")){
+			LijnStuk lijnstuk = inputLijnStuk();
+			if(lijnstuk == null) return;
+			JOptionPane.showMessageDialog(null, "U heeft een correcte lijnstuk aangemaakt: " + lijnstuk, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
 		}
+	}
+	
+	public LijnStuk inputLijnStuk(){
+		LijnStuk lijnstuk = null;
+		
+		while(lijnstuk == null){
+			try{
+				Punt punt1 = inputPunt();
+				if(punt1 == null) return null;
+				
+				Punt punt2 = inputPunt();
+				if(punt2 == null) return null;
+				
+				lijnstuk = new LijnStuk(punt1, punt2);
+			} catch (DomainException e){
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+		}
+		
+		return lijnstuk;
+	}
+	
+	public Driehoek inputDriehoek(){
+		Driehoek driehoek = null;
+		
+		while(driehoek == null){
+			try{
+				Punt hoek1 = inputPunt();
+				if(hoek1 == null) return null;
+				
+				Punt hoek2 = inputPunt();
+				if(hoek2 == null) return null;
+				
+				Punt hoek3 = inputPunt();
+				if(hoek3 == null) return null;
+				
+				driehoek = new Driehoek(hoek1, hoek2, hoek3);
+			} catch (DomainException e){
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+		}
+		
+		return driehoek;
 	}
 	
 	public Rechthoek inputRechthoek(){
