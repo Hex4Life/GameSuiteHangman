@@ -32,7 +32,7 @@ public class CirkelTest {
 		Cirkel cirkel = new Cirkel(punt1, radius1);
 		
 		assertEquals(radius1, cirkel.getRadius());
-		assertEquals(punt1, cirkel.getMiddelPunt());
+		assertEquals(punt1, cirkel.getMiddelpunt());
 	}
 	
 	@Test(expected = DomainException.class)
