@@ -30,7 +30,6 @@ public class LijnStuk extends Vorm{
 			
 			return this.getStartPunt().equals(lijnstuk.getStartPunt()) && this.getEindPunt().equals(lijnstuk.getEindPunt()); 
 		}
-		
 		return false;
 	}
 
