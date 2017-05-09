@@ -42,7 +42,7 @@ public class Speler {
 		return false;
 	}
 	public String toString(){
-		return "iets";
+		return "Naam: " + this.getNaam() + " Score: "+this.getScore();
 	}
 
 }
