@@ -1,6 +1,6 @@
 package domain;
 
-public class Rechthoek {
+public class Rechthoek extends Vorm {
 	private int breedte, hoogte;
 	private Punt linkerBovenhoek;
 	
@@ -45,7 +45,8 @@ public class Rechthoek {
 		if(o instanceof Rechthoek){
 			Rechthoek r = (Rechthoek)o;
 			
-			return r.getLinkerBovenhoek().equals(this.getLinkerBovenhoek())
+			return super.equals(o) 
+					&& r.getLinkerBovenhoek().equals(this.getLinkerBovenhoek())
 					&& r.getBreedte() == this.getBreedte()
 					&& r.getHoogte() == this.getHoogte();
 		}
