@@ -28,7 +28,8 @@ public class LijnStuk extends Vorm{
 		if(o instanceof LijnStuk){
 			LijnStuk lijnstuk = (LijnStuk)o;
 			
-			return this.getStartPunt().equals(lijnstuk.getStartPunt()) && this.getEindPunt().equals(lijnstuk.getEindPunt()); 
+			return (this.getStartPunt().equals(lijnstuk.getStartPunt()) && this.getEindPunt().equals(lijnstuk.getEindPunt()))
+					|| (this.getEindPunt().equals(lijnstuk.getStartPunt()) && this.getStartPunt().equals(lijnstuk.getEindPunt())); 
 		}
 		return false;
 	}
