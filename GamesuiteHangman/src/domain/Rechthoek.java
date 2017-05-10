@@ -1,10 +1,7 @@
 package domain;
 
-<<<<<<< HEAD
 public class Rechthoek extends Vorm{
-=======
-public class Rechthoek extends Vorm {
->>>>>>> e125a5bd81a9f3422e8c8327e28abb28cb4bbfcd
+
 	private int breedte, hoogte;
 	private Punt linkerBovenhoek;
 	
