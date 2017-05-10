@@ -42,5 +42,11 @@ public class LijnStukTest {
 		LijnStuk lijnStuk = new LijnStuk(punt1, punt2);
 		assertFalse(lijnStuk.equals(null));
 	}
+	@Test
+	public void equals_moet_true_teruggeven_als_omgekeert_lijnstuk_hetzelfde_is(){
+		LijnStuk lijnstuk = new LijnStuk(punt1,punt2);
+		LijnStuk lijnstuk2 = new LijnStuk(punt2, punt1);
+		assertTrue(lijnstuk.equals(lijnstuk2));
+	}
 }
 	
