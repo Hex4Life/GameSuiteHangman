@@ -58,12 +58,12 @@ public class Omhullende {
 		return linkerBovenhoek.getY() + hoogte;
 	}
 	
-//equals
+	//equals
 	public boolean equals(Object o){
 		if(o instanceof Omhullende){
 			Omhullende omhullende = (Omhullende)o;
 			
-			return this.getLinkerBovenhoek() == omhullende.getLinkerBovenhoek() && this.getBreedte() == omhullende.getBreedte() && this.getHoogte() == omhullende.getHoogte();
+			return this.getLinkerBovenhoek().equals(omhullende.getLinkerBovenhoek()) && this.getBreedte() == omhullende.getBreedte() && this.getHoogte() == omhullende.getHoogte();
 		}
 		return false;
 	}
