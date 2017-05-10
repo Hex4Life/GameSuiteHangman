@@ -18,8 +18,12 @@ public class Tekening implements Drawable {
 		vormen = new ArrayList<Vorm>();
 	}
 	
+	public static boolean isValidNaam(String naam){
+		return naam != null && !naam.trim().isEmpty();
+	}
+	
 	private void setNaam(String naam) {
-		if (naam == null || naam.trim().isEmpty()) {
+		if (!isValidNaam(naam)) {
 			throw new IllegalArgumentException("Naam mag niet leeg zijn");
 		}
 		this.naam = naam;

@@ -9,10 +9,12 @@ import domain.LijnStuk;
 import domain.Punt;
 import domain.Rechthoek;
 import domain.Speler;
+import domain.Tekening;
 
 public class PictionaryUi {
 
 	private Speler speler;
+	private Tekening tekening;
 	private Object[] shapes = {"Cirkel", "Driehoek", "Lijnstuk", "Rechthoek"};
 	
 	public PictionaryUi(Speler speler){
@@ -20,7 +22,29 @@ public class PictionaryUi {
 	}
 	
 	public void showMenu(){
+		String naam = inputNaamTekening();
+		if(naam == null) return;
+		tekening = new Tekening(naam);
+		
+	}
+	
+	public String inputNaamTekening(){
+		String input = "";
+		String errMsg = "";
+		
+		do{
+			input = JOptionPane.showInputDialog(errMsg + "Geef de naam van de tekening:");
+			if(input == null) return null;
+			errMsg = "Geen geldige naam\n\n";
+		} while(!Tekening.isValidNaam(input));
+		
+		return input;
+	}
+	
+	public void vormMaken(){
 		Object keuze = JOptionPane.showInputDialog(null, "Wat wilt u tekenen", "input", JOptionPane.INFORMATION_MESSAGE, null, shapes, null);
+		
+		if(keuze == null) return;
 		
 		if(keuze.equals("Cirkel")){
 			Cirkel cirkel = inputCirkel();
