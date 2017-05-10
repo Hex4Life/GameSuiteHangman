@@ -1,9 +1,10 @@
 package domain;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tekening {
+public class Tekening implements Drawable {
 
 	private String naam;
 	private List<Vorm> vormen;
@@ -38,25 +39,36 @@ public class Tekening {
 				o.getMinimumY()< MIN_Y ||
 				o.getMaximumY() > MAX_Y) throw new DomainException("de figuur mag niet buiten de tekening liggen");
 		
-		vormen.add(vorm);
+		getVormen().add(vorm);
 	}
 	
 	public Vorm getVorm(int index) {
-		return vormen.get(index);
+		return getVormen().get(index);
 	}
 	
 	public void verwijder(Vorm vorm) {
-		vormen.remove(vorm);
+		getVormen().remove(vorm);
 	}
 	
 	public boolean bevat(Vorm vorm) {
-		return vormen.contains(vorm);
+		return getVormen().contains(vorm);
 	}
 
 	public int getAantalVormen() {
-		return vormen.size();
+		return getVormen().size();
 	}
-
+	public List<Vorm> getVormen(){
+		return vormen;
+	}
+	
+	@Override
+	public void teken(Graphics g){
+		for(Vorm vorm : getVormen()){
+			vorm.teken(g);
+		}
+	}
+	
+	@Override
 	public String toString() {
 		String res = "Tekening met naam " + getNaam() + " bestaat uit " + getAantalVormen() + " vormen:\n";
 		for (Vorm vorm: vormen) {
