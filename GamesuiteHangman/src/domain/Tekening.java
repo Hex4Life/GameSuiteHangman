@@ -29,12 +29,15 @@ public class Tekening {
 	}
 	
 	public void voegToe(Vorm vorm) {
-		if (vorm == null) {
-			throw new DomainException("Vorm mag niet leeg zijn");
-		}
-		if (this.bevat(vorm)) {
-			throw new DomainException("Tekening bevat vorm al");
-		}
+		
+		if (vorm == null) throw new DomainException("Vorm mag niet leeg zijn");
+		if (bevat(vorm)) throw new DomainException("Tekening bevat vorm al");
+		Omhullende o = vorm.getOmhullende();
+		if (o.getMinimumX() < MIN_X ||
+				o.getMaximumX() > MAX_X ||
+				o.getMinimumY()< MIN_Y ||
+				o.getMaximumY() > MAX_Y) throw new DomainException("de figuur mag niet buiten de tekening liggen");
+		
 		vormen.add(vorm);
 	}
 	
