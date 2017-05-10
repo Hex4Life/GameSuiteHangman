@@ -46,8 +46,7 @@ public class Rechthoek extends Vorm{
 		if(o instanceof Rechthoek){
 			Rechthoek r = (Rechthoek)o;
 			
-			return super.equals(o) 
-					&& r.getLinkerBovenhoek().equals(this.getLinkerBovenhoek())
+			return r.getLinkerBovenhoek().equals(this.getLinkerBovenhoek())
 					&& r.getBreedte() == this.getBreedte()
 					&& r.getHoogte() == this.getHoogte();
 		}
