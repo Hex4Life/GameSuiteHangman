@@ -114,8 +114,35 @@ public class TekeningTest {
 	}
 	
 	@Test
-	public void voegToe_voegt_juiste_vorm_toe() {
-		
+	public void voegToe_voegt_juiste_vorm_toe_als_nipt_binnen_tekening() {
+		Vorm vorm = new Rechthoek(new Punt(Tekening.MIN_X, Tekening.MIN_Y), Tekening.MAX_X-Tekening.MIN_X, Tekening.MAX_Y - Tekening.MIN_Y);
+		Tekening tekening = new Tekening("tekening");
+		tekening.voegToe(vorm);
+		assertTrue(tekening.bevat(vorm));
+	}
+	@Test(expected = DomainException.class)
+	public void voegToe_gooit_Exception_indien_vorm_te_kleine_X_heeft(){
+		Vorm vorm = new Rechthoek(new Punt(Tekening.MIN_X-5, Tekening.MIN_Y), Tekening.MAX_X-Tekening.MIN_X, Tekening.MAX_Y - Tekening.MIN_Y);
+		Tekening tekening = new Tekening("tekening");
+		tekening.voegToe(vorm);
+	}
+	@Test(expected = DomainException.class)
+	public void voegToe_gooit_Exception_indien_vorm_te_kleine_Y_heeft(){
+		Vorm vorm = new Rechthoek(new Punt(Tekening.MIN_X, Tekening.MIN_Y-5), Tekening.MAX_X-Tekening.MIN_X, Tekening.MAX_Y - Tekening.MIN_Y);
+		Tekening tekening = new Tekening("tekening");
+		tekening.voegToe(vorm);
+	}
+	@Test(expected = DomainException.class)
+	public void voegToe_gooit_Exception_indien_vorm_te_grote_X_heeft(){
+		Vorm vorm = new Rechthoek(new Punt(Tekening.MIN_X, Tekening.MIN_Y), Tekening.MAX_X+5-Tekening.MIN_X, Tekening.MAX_Y - Tekening.MIN_Y);
+		Tekening tekening = new Tekening("tekening");
+		tekening.voegToe(vorm);
+	}
+	@Test(expected = DomainException.class)
+	public void voegToe_gooit_Exception_indien_vorm_te_grote_Y_heeft(){
+		Vorm vorm = new Rechthoek(new Punt(Tekening.MIN_X, Tekening.MIN_Y), Tekening.MAX_X-Tekening.MIN_X, Tekening.MAX_Y+5 - Tekening.MIN_Y);
+		Tekening tekening = new Tekening("tekening");
+		tekening.voegToe(vorm);
 	}
 	
 	@Test
