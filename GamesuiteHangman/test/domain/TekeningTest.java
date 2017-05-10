@@ -100,7 +100,36 @@ public class TekeningTest {
 		huisMetSchouw.verwijder(schouwNietInTekening);
 		assertTrue(huis.equals(huisMetSchouw));
 	}
-
+	
+	@Test (expected = DomainException.class)
+	public void voegToe_gooit_exception_bij_toevoegen_null() {
+		Tekening huis = createHuisZonderShouw();
+		huis.voegToe(null);
+	}
+	
+	@Test (expected = DomainException.class)
+	public void voegToe_gooit_exception_als_vorm_al_in_tekening() {
+		Tekening huis = createHuisZonderShouw();
+		huis.voegToe(raam);
+	}
+	
+	@Test
+	public void voegToe_voegt_juiste_vorm_toe() {
+		
+	}
+	
+	@Test
+	public void getVorm_geeft_juiste_vorm_terug() {
+		Tekening huis = createHuisZonderShouw();
+		assertEquals(deur, huis.getVorm(2));
+	}
+	
+	@Test
+	public void verwijder_verwijdert_juiste_vorm() {
+		Tekening huis = createHuisZonderShouw();
+		huis.verwijder(dak);
+		assertFalse(huis.bevat(dak));
+	}
 
 	public Tekening createHuisMetSchouw() {
 		Tekening huisMetSchouw = new Tekening("huisMetSchouw");
