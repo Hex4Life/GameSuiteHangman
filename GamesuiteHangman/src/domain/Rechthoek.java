@@ -61,7 +61,8 @@ public class Rechthoek extends Vorm{
 
 	@Override
 	public Omhullende getOmhullende() {
-		// TODO Auto-generated method stub
-		return null;
+		Omhullende omhullende = new Omhullende(this.getLinkerBovenhoek(), this.getBreedte(), this.getHoogte());
+		return omhullende;
+	
 	}
 }
