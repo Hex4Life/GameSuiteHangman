@@ -15,15 +15,23 @@ public class CirkelTest {
 	private Punt punt2;
 	private Cirkel cirkel1;
 	private Cirkel cirkel2;
+	private Punt punt3;
+	private int radius3;
+	private Cirkel cirkel3;
+	private Punt puntLinkerBovenHoek;
 	
 	@Before
 	public void setUp() throws Exception {
 		radius1 = 10;
 		radius2 = 6;
+		radius3 = 1;
 		punt1 = new Punt(2, 7);
 		punt2 = new Punt(-5, 0);
+		punt3 = new Punt(4,4);
+		puntLinkerBovenHoek = new Punt(3,3);
 		cirkel1 = new Cirkel(punt1, radius1);
 		cirkel2 = new Cirkel(punt2, radius2);
+		cirkel3 = new Cirkel(punt3, radius3);
 	}
 
 	
@@ -78,6 +86,14 @@ public class CirkelTest {
 		cirkel2 = new Cirkel(punt2, radius1); 
 		
 		assertFalse(cirkel1.equals(cirkel2));
+	}
+	
+	@Test
+	public void omhullende_is_juist(){
+		Cirkel cirkel = new Cirkel(punt3, radius3);
+		
+		assertTrue(puntLinkerBovenHoek.equals(cirkel.getOmhullende().getLinkerBovenhoek()));
+		
 	}
 
 }
