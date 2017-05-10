@@ -9,11 +9,10 @@ public class LijnStuk extends Vorm{
 	}
 	
 	public void setStartEnEindPunt(Punt start, Punt eind){
-		if(start != null) this.start = start;
-		else{throw new DomainException("Startpunt mag niet null zijn.");}
-		
-		if(eind != null) this.eind = eind;
-		else{throw new DomainException("Eindpunt mag niet null zijn.");}
+		if (start == null || eind == null)throw new DomainException("start en eind mogen niet null zijn");
+		if (start.equals(eind)) throw new DomainException("begin en eind punt mogen niet hetzelfde zijn");
+		this.eind = eind;
+		this.start = start;
 	}
 
 	public Punt getStartPunt() {
