@@ -1,5 +1,7 @@
 package domain;
 
+import java.awt.Graphics;
+
 public class LijnStuk extends Vorm{
 	private Punt start;
 	private Punt eind;
@@ -21,6 +23,11 @@ public class LijnStuk extends Vorm{
 
 	public Punt getEindPunt() {
 		return eind;
+	}
+	
+	@Override
+	public void teken(Graphics g){
+		g.drawLine(getStartPunt().getX(), getStartPunt().getY(), getEindPunt().getX(), getEindPunt().getY());
 	}
 
 	@Override

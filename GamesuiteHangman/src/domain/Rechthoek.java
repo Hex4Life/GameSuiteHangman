@@ -1,5 +1,7 @@
 package domain;
 
+import java.awt.Graphics;
+
 public class Rechthoek extends Vorm{
 
 	private int breedte, hoogte;
@@ -39,6 +41,12 @@ public class Rechthoek extends Vorm{
 		}
 		
 		this.linkerBovenhoek = linkerBovenhoek;
+	}
+	
+	@Override
+	public void teken(Graphics g){
+		Omhullende omh = getOmhullende();
+		g.drawRect(omh.getMinimumX(), omh.getMinimumY(), omh.getBreedte(), omh.getHoogte());
 	}
 	
 	@Override

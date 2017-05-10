@@ -1,5 +1,6 @@
 package domain;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,9 +45,15 @@ public class Driehoek extends Vorm{
 		return hoekPunt3;
 	}
 	
+	@Override
+	public void teken(Graphics g){
+		int[] xPoints = {getHoekPunt1().getX(), getHoekPunt2().getX(), getHoekPunt3().getX()};
+		int[] yPoints = {getHoekPunt1().getY(), getHoekPunt2().getY(), getHoekPunt3().getY()};
+		g.drawPolygon(xPoints, yPoints, 3);
+		
+	}
 	
-	
-	
+	@Override
 	public boolean equals(Object o){
 		if(o instanceof Driehoek){
 			Driehoek driehoek = (Driehoek) o;
@@ -70,7 +77,7 @@ public class Driehoek extends Vorm{
 		
 		return false;
 	}
-	
+	@Override
 	public String toString() {
 		return "Driehoek: hoekpunt1: " + this.hoekPunt1.toString() + " - hoekpunt2: " + this.hoekPunt2.toString() + " hoekpunt3: " + this.hoekPunt3.toString();
 	}
