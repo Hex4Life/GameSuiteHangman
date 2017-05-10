@@ -44,20 +44,17 @@ public class Cirkel extends Vorm{
 		if(o == null){
 			return false;
 		}
+		
 		if(o instanceof Cirkel){
 			Cirkel cirkel = (Cirkel) o;
-			if(this.getMiddelpunt() == cirkel.getMiddelpunt() && this.getRadius() == cirkel.getRadius()){
-				return true;
-				
-			}
+			
+			return this.getMiddelpunt().equals(cirkel.getMiddelpunt()) && this.getRadius() == cirkel.getRadius();
 		}
+		
 		return false;
 	}
 	
 	public String toString() {
 		return "Cirkel: middelpunt: " + this.getMiddelpunt().toString() +" - straal: " + this.getRadius(); 
-	}
-	
-	
-	
+	}	
 }
