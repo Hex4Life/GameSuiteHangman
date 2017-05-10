@@ -7,10 +7,10 @@ public class Tekening {
 
 	private String naam;
 	private List<Vorm> vormen;
-	private static final int MIN_X = 0;
-	private static final int MIN_Y = 0;
-	private static final int MAX_X = 399;
-	private static final int MAX_Y = 399;
+	public static final int MIN_X = 0;
+	public static final int MIN_Y = 0;
+	public static final int MAX_X = 399;
+	public static final int MAX_Y = 399;
 	
 	public Tekening(String naam) {
 		setNaam(naam);
