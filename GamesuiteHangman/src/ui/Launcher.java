@@ -6,6 +6,8 @@ import domain.Speler;
 
 public class Launcher {
 
+	private static final Object[] OPTIONS = {"HangMan", "Pictionary"};
+	
 	public static void main(String[] args) {
 		String naam = inputNaamSpeler();
 		if(naam == null) return;
@@ -14,8 +16,17 @@ public class Launcher {
 		JOptionPane.showMessageDialog(null, "... heeft als score: " + speler.getScore());
 		JOptionPane.showMessageDialog(null, "... zal binnekort spelen", speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
 		
-		PictionaryUi ui = new PictionaryUi(speler);
-		ui.showMenu();
+		Object keuze = JOptionPane.showInputDialog(null, "Dag " + naam + ", welk spel wil je spelen?", "Keuze spel", JOptionPane.QUESTION_MESSAGE, null, OPTIONS, null);
+		
+		if (keuze.equals("HangMan")) {
+			HangmanUi ui = new HangmanUi(speler);
+			ui.showMenu();
+		}
+		else if (keuze.equals("Pictionary")) {
+			PictionaryUi ui = new PictionaryUi(speler);
+			ui.showMenu();
+		}
+		
 	}
 	
 	private static String inputNaamSpeler(){
