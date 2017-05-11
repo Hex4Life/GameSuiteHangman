@@ -5,18 +5,14 @@ import java.util.List;
 
 public class HintWoord {
 	
-	private boolean geraden;
 	private List<HintLetter> hintLetters;
 	private String woord;
-	private String hint;
 	
 	public HintWoord(String woord){
 		hintLetters = new ArrayList<>();
 		setWoord(woord);
 		
 		char[] woordArray = woord.toCharArray();
-		System.out.println(woordArray);
-		;
 		for(char c: woordArray){
 			hintLetters.add(new HintLetter(c));
 		}
@@ -36,17 +32,28 @@ public class HintWoord {
 	public String toString(){
 		String res = "";
 		for(HintLetter letter: hintLetters){
-			res =+ letter.toChar() + " ";
+			res += letter.toChar() + " ";
 		}
+		res = res.substring(0, res.length()-1);
+		
 		return res;
 	}
 	
 	public boolean raad(char letter){
-		return false;
+		boolean geraden = false;
+		for (HintLetter c : hintLetters){
+			if (c.raad(letter)) {
+				geraden = true;
+			}
+		}
+		return geraden;
 	}
 	
 	public boolean isGeraden(){
-		return geraden;
+		for (HintLetter c : hintLetters){
+			if (!c.isGeraden()) return false;
+		}
+		return true;
 	}
 	
 	
