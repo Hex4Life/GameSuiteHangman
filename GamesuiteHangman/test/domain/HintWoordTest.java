@@ -16,6 +16,7 @@ public class HintWoordTest {
 		HintWoord hint = new HintWoord(woord);
 		
 		assertEquals(woord, hint.getWoord());
+		System.out.println(hint.toString());
 		assertEquals("_ _ _ _", hint.toString());
 		assertFalse(hint.isGeraden());
 	}

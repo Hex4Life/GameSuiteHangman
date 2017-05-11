@@ -1,5 +1,7 @@
 package domain;
 
+import java.awt.Graphics;
+
 public class Cirkel extends Vorm{
 	
 	private Punt middelpunt;
@@ -38,7 +40,12 @@ public class Cirkel extends Vorm{
 	}
 
 	// Functies
-	
+	@Override
+	public void teken(Graphics g){
+		Omhullende omh = getOmhullende();
+		g.drawOval(omh.getMinimumX(), omh.getMinimumY(), omh.getBreedte(), omh.getHoogte());
+
+	}
 	@Override
 	public boolean equals(Object o) {
 		if(o == null){
@@ -53,7 +60,7 @@ public class Cirkel extends Vorm{
 		
 		return false;
 	}
-	
+	@Override
 	public String toString() {
 		return "Cirkel: middelpunt: " + this.getMiddelpunt().toString() +" - straal: " + this.getRadius() 
 		+ "Omhullende: " + this.getOmhullende().toString() +" - "+ this.getRadius()*2 +" - " + this.getRadius()*2; 

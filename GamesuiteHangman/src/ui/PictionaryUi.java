@@ -14,6 +14,7 @@ import domain.Tekening;
 public class PictionaryUi {
 
 	private Speler speler;
+	private Tekening tekening;
 	private Object[] shapes = {"Cirkel", "Driehoek", "Lijnstuk", "Rechthoek"};
 	
 	public PictionaryUi(Speler speler){
@@ -21,66 +22,45 @@ public class PictionaryUi {
 	}
 	
 	public void showMenu(){
-		String naamTekening = JOptionPane.showInputDialog("Geef de naam van je tekening:");
-		Tekening tekening = new Tekening(naamTekening);
+		String naam = inputNaamTekening();
+		if(naam == null) return;
+		tekening = new Tekening(naam);
 		
-		boolean stoppen = false;
-		while(!stoppen){
-			int input = -1;
-			String inputString = JOptionPane.showInputDialog("Wat wil je doen:\n\n"
-						+ "1. Vorm maken\n"
-						+ "2. Tekening tonen\n\n"
-						+ "0. Stoppen");
-			if (inputString == null) {
-				stoppen = true;
-				break;
-			}
-			try {
-				input = Integer.parseInt(inputString);
-			}
-			catch(NumberFormatException exc) {
-				input = -1;
-			}
-			
-			switch (input) {
-				case 0:
-					stoppen = true;
-					break;
-				case 1:
-					showVormenMenu(tekening);
-					break;
-				case 2:
-					JOptionPane.showMessageDialog(null, tekening);
-					break;
-				default:
-					continue;
-			}
-		}
 	}
 	
+	public String inputNaamTekening(){
+		String input = "";
+		String errMsg = "";
+		
+		do{
+			input = JOptionPane.showInputDialog(errMsg + "Geef de naam van de tekening:");
+			if(input == null) return null;
+			errMsg = "Geen geldige naam\n\n";
+		} while(!Tekening.isValidNaam(input));
+		
+		return input;
+	}
 	
-	public void showVormenMenu(Tekening tekening){
+	public void vormMaken(){
 		Object keuze = JOptionPane.showInputDialog(null, "Wat wilt u tekenen", "input", JOptionPane.INFORMATION_MESSAGE, null, shapes, null);
+		
+		if(keuze == null) return;
 		
 		if(keuze.equals("Cirkel")){
 			Cirkel cirkel = inputCirkel();
 			if(cirkel == null) return;
-			tekening.voegToe(cirkel);
 			JOptionPane.showMessageDialog(null, "U heeft een correcte cirkel aangemaakt: " + cirkel, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
 		} else if(keuze.equals("Rechthoek")){
 			Rechthoek rechthoek = inputRechthoek();
 			if(rechthoek == null) return;
-			tekening.voegToe(rechthoek);
 			JOptionPane.showMessageDialog(null, "U heeft een correcte rechthoek aangemaakt: " + rechthoek, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
 		} else if(keuze.equals("Driehoek")){
 			Driehoek driehoek = inputDriehoek();
 			if(driehoek == null) return;
-			tekening.voegToe(driehoek);
 			JOptionPane.showMessageDialog(null, "U heeft een correcte driehoek aangemaakt: " + driehoek, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
 		} else if(keuze.equals("Lijnstuk")){
 			LijnStuk lijnstuk = inputLijnStuk();
 			if(lijnstuk == null) return;
-			tekening.voegToe(lijnstuk);
 			JOptionPane.showMessageDialog(null, "U heeft een correcte lijnstuk aangemaakt: " + lijnstuk, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
