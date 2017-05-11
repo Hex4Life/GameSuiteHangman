@@ -2,7 +2,7 @@ package domain;
 
 public class TekenHangMan extends Tekening {
 		
-	private int huidigeZichtbaar = 4;
+	private int huidigeZichtbaar;
 	
 	public TekenHangMan() {
 		super("HangMan");
@@ -24,6 +24,7 @@ public class TekenHangMan extends Tekening {
 		Vorm armRechts = new LijnStuk(new Punt(280, 200), new Punt(330, 170));
 		Vorm handLinks = new Cirkel(new Punt(230, 170), 5);
 		Vorm handRechts = new Cirkel(new Punt(330, 170), 5);
+		
 		super.voegToe(galgBodem);
 		super.voegToe(galgStaaf);
 		super.voegToe(hangbar);
@@ -42,6 +43,8 @@ public class TekenHangMan extends Tekening {
 		super.voegToe(armRechts);
 		super.voegToe(handLinks);
 		super.voegToe(handRechts);
+		
+		reset();
 	}
 
 	public int getAantalOnzichtbare() {

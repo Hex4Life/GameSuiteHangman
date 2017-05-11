@@ -3,6 +3,10 @@ package domain;
 public abstract class Vorm implements Drawable {
 
 	public boolean zichtbaar;
+	
+	public Vorm(){
+		setZichtbaar(true);
+	}
 
 	public abstract boolean equals(Object o);
 

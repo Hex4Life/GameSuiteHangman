@@ -43,9 +43,11 @@ public class Driehoek extends Vorm {
 
 	@Override
 	public void teken(Graphics g) {
-		int[] xPoints = { getHoekPunt1().getX(), getHoekPunt2().getX(), getHoekPunt3().getX() };
-		int[] yPoints = { getHoekPunt1().getY(), getHoekPunt2().getY(), getHoekPunt3().getY() };
-		g.drawPolygon(xPoints, yPoints, 3);
+		if(isZichtbaar()){
+			int[] xPoints = { getHoekPunt1().getX(), getHoekPunt2().getX(), getHoekPunt3().getX() };
+			int[] yPoints = { getHoekPunt1().getY(), getHoekPunt2().getY(), getHoekPunt3().getY() };
+			g.drawPolygon(xPoints, yPoints, 3);			
+		}
 
 	}
 

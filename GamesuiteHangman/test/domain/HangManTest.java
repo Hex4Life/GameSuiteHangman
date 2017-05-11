@@ -57,10 +57,10 @@ public class HangManTest {
 	public void raad_moet_volgende_zichtbaar_zetten_indien_fout_geraden(){
 		hangman = new HangMan(geldigeSpeler, woordenlijstMetEnkelWoordTest);
 		char letter = 'a';
-		assertEquals(14, hangman.getTekening().getAantalOnzichtbaar());
+		assertEquals(14, hangman.getTekening().getAantalOnzichtbare());
 		
 		hangman.raad(letter);
-		assertEquals(13, hangman.getTekening().getAantalOnzichtbaar());
+		assertEquals(13, hangman.getTekening().getAantalOnzichtbare());
 		assertFalse(hangman.isGameOver());
 		assertFalse(hangman.isGewonnen());
 	}
@@ -69,10 +69,10 @@ public class HangManTest {
 	public void raad_mag_volgende_niet_zichtbaar_zetten_indien_juist_geraden(){
 		hangman = new HangMan(geldigeSpeler, woordenlijstMetEnkelWoordTest);
 		char letter = 'e';
-		assertEquals(14, hangman.getTekening().getAantalOnzichtbaar());
+		assertEquals(14, hangman.getTekening().getAantalOnzichtbare());
 		
 		hangman.raad(letter);
-		assertEquals(14, hangman.getTekening().getAantalOnzichtbaar());
+		assertEquals(14, hangman.getTekening().getAantalOnzichtbare());
 		assertFalse(hangman.isGameOver());
 		assertFalse(hangman.isGewonnen());
 	}
@@ -85,7 +85,7 @@ public class HangManTest {
 		
 		hangmanOp1NaGeraden.raad('s');
 
-		assertEquals(14, hangmanOp1NaGeraden.getTekening().getAantalOnzichtbaar());
+		assertEquals(14, hangmanOp1NaGeraden.getTekening().getAantalOnzichtbare());
 		assertFalse(hangmanOp1NaGeraden.isGameOver());
 		assertTrue(hangmanOp1NaGeraden.isGewonnen());
 	}
@@ -99,7 +99,7 @@ public class HangManTest {
 
 		hangmanNietGeradenEn13FouteAntwoorden.raad('o');
 		
-		assertEquals(0, hangmanNietGeradenEn13FouteAntwoorden.getTekening().getAantalOnzichtbaar());
+		assertEquals(0, hangmanNietGeradenEn13FouteAntwoorden.getTekening().getAantalOnzichtbare());
 		assertTrue(hangmanNietGeradenEn13FouteAntwoorden.isGameOver());
 		assertFalse(hangmanNietGeradenEn13FouteAntwoorden.isGewonnen());
 	}

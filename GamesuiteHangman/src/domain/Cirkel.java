@@ -45,8 +45,10 @@ public class Cirkel extends Vorm{
 	// Functies
 	@Override
 	public void teken(Graphics g){
-		Omhullende omh = getOmhullende();
-		g.drawOval(omh.getMinimumX(), omh.getMinimumY(), omh.getBreedte(), omh.getHoogte());
+		if(isZichtbaar()){
+			Omhullende omh = getOmhullende();
+			g.drawOval(omh.getMinimumX(), omh.getMinimumY(), omh.getBreedte(), omh.getHoogte());			
+		}
 
 	}
 	@Override

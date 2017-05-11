@@ -3,7 +3,7 @@ package domain;
 public class HangMan {
 	
 	private Speler speler;
-	private TekeningHangMan tekening;
+	private TekenHangMan tekening;
 	private WoordenLijst woordenlijst;
 	private HintWoord currentHintWoord;
 	private GameStatus status;
@@ -11,11 +11,12 @@ public class HangMan {
 	public HangMan(Speler speler, WoordenLijst woordenLijst){
 		this.speler = speler;
 		this.woordenlijst = woordenLijst;
+		tekening = new TekenHangMan();
 		reset();
 	}
 	
 	public void reset(){
-		tekening = new HangManTekening();
+		getTekening().reset();
 		currentHintWoord = new HintWoord(woordenlijst.getRandomWoord());
 		status = GameStatus.BEZIG;
 	}
@@ -28,7 +29,7 @@ public class HangMan {
 		return speler;
 	}
 	
-	public TekeningHangMan getTekening(){
+	public TekenHangMan getTekening(){
 		return tekening;
 	}
 	

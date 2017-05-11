@@ -17,7 +17,6 @@ public class CirkelTest {
 	private Cirkel cirkel2;
 	private Punt punt3;
 	private int radius3;
-	private Cirkel cirkel3;
 	private Punt puntLinkerBovenHoek;
 	
 	@Before
@@ -31,7 +30,6 @@ public class CirkelTest {
 		puntLinkerBovenHoek = new Punt(3,3);
 		cirkel1 = new Cirkel(punt1, radius1);
 		cirkel2 = new Cirkel(punt2, radius2);
-		cirkel3 = new Cirkel(punt3, radius3);
 	}
 
 	

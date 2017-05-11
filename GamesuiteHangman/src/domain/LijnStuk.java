@@ -27,7 +27,9 @@ public class LijnStuk extends Vorm{
 	
 	@Override
 	public void teken(Graphics g){
-		g.drawLine(getStartPunt().getX(), getStartPunt().getY(), getEindPunt().getX(), getEindPunt().getY());
+		if(isZichtbaar()){
+			g.drawLine(getStartPunt().getX(), getStartPunt().getY(), getEindPunt().getX(), getEindPunt().getY());			
+		}
 	}
 
 	@Override
