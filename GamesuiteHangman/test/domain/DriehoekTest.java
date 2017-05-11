@@ -14,6 +14,11 @@ public class DriehoekTest {
 	private Punt punt3 = new Punt(190, 30);
 	private Punt zelfdeAlsPunt3 = new Punt(190, 30);
 	private Punt verschillendVanPunt3 = new Punt(120, 100);
+	
+	
+	private Punt punt4 = new Punt(5,1);
+	private Punt punt5 = new Punt(3,3);
+	private Punt punt6 = new Punt(7,4);
 
 	@Test
 	public void Driehoek_moet_DrieHoek_aanmaken_met_gegeven_hoekpunten() {
@@ -72,6 +77,20 @@ public class DriehoekTest {
 		Driehoek drieHoek2 = new Driehoek(zelfdeAlsPunt1, zelfdeAlsPunt2, zelfdeAlsPunt3);
 		
 		assertTrue(drieHoek1.equals(drieHoek2));
+	}
+	
+	
+	@Test
+	public void omhullende_is_juist(){
+		Driehoek driehoek = new Driehoek(punt4, punt5, punt6);
+		Punt linkerbovenhoek = new Punt(3,1);
+		int breedte = 4;
+		int hoogte = 3;
+		Omhullende omhullende = new Omhullende(linkerbovenhoek, breedte, hoogte);
+		
+		assertTrue(linkerbovenhoek.equals(driehoek.getOmhullende().getLinkerBovenhoek()));
+		
+		
 	}
 
 }
