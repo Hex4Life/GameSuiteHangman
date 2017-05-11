@@ -40,6 +40,7 @@ public class HangmanPaneel extends JPanel {
 	
 	private void reset() {
 		woord.setText(getSpel().getHint());
+		letter.setText("");
 		getTekenVenster().teken();
 	}
 	
@@ -48,21 +49,7 @@ public class HangmanPaneel extends JPanel {
 		@Override
 		public void keyPressed(KeyEvent arg0) {
 			if(arg0.getKeyCode()== KeyEvent.VK_ENTER){
-				String input = letter.getText();
-				char guess = '\u0000';
-				if(input.length() > 0){
-					guess = input.charAt(0);
-				}
-				//TODO raad
-
-				woord.setText(getSpel().getHint());
-				letter.setText("");
-				getTekenVenster().teken();
-				
-				//TODO
-				//toon boodschap als gewonnen of verloren en vraag of speler opnieuw wilt spelen
-				//als de speler opnieuw wilt spelen: herzet het spel en het paneel
-				//anders stop (System.exit(0))
+				handleInput();
 			}
 		}
 
@@ -70,6 +57,47 @@ public class HangmanPaneel extends JPanel {
 		public void keyReleased(KeyEvent arg0) {/* Niet nodig*/}
 		@Override
 		public void keyTyped(KeyEvent arg0) {/* Niet nodig*/}
+	}
+	
+	private void handleInput(){
+		String input = letter.getText();
+		char guess = '\u0000';
+		if(input.length() > 0){
+			guess = input.charAt(0);
+		}
+		
+		getSpel().raad(guess);
+
+		reset();
+		
+		handleEndOfGame();
+	}
+	
+	private void handleEndOfGame(){
+		//toon boodschap als gewonnen of verloren en vraag of speler opnieuw wilt spelen
+		//als de speler opnieuw wilt spelen: herzet het spel en het paneel
+		//anders stop (System.exit(0))
+		
+		String msg = null;
+		
+		if(getSpel().isGameOver()) msg = "Jammer maar helaas!";
+		if(getSpel().isGewonnen()) msg = "Joepi, gewonnen!";
+		
+		if(msg != null){
+			String input = null;
+			boolean running = true;
+			
+			while(running){
+				input = JOptionPane.showInputDialog(msg + "\nNog een keer? (y/n)");
+				
+				if(input == null || input.equals('n')) System.exit(0);
+				if(input.equals("y")){
+					getSpel().reset();
+					reset();
+					running = false;
+				}
+			}
+		}
 	}
 	
 	private void setSpel(HangMan spel){
