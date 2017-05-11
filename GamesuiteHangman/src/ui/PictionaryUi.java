@@ -45,24 +45,29 @@ public class PictionaryUi {
 		Object keuze = JOptionPane.showInputDialog(null, "Wat wilt u tekenen", "input", JOptionPane.INFORMATION_MESSAGE, null, shapes, null);
 		
 		if(keuze == null) return;
-		
-		if(keuze.equals("Cirkel")){
-			Cirkel cirkel = inputCirkel();
-			if(cirkel == null) return;
-			JOptionPane.showMessageDialog(null, "U heeft een correcte cirkel aangemaakt: " + cirkel, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
-		} else if(keuze.equals("Rechthoek")){
-			Rechthoek rechthoek = inputRechthoek();
-			if(rechthoek == null) return;
-			JOptionPane.showMessageDialog(null, "U heeft een correcte rechthoek aangemaakt: " + rechthoek, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
-		} else if(keuze.equals("Driehoek")){
-			Driehoek driehoek = inputDriehoek();
-			if(driehoek == null) return;
-			JOptionPane.showMessageDialog(null, "U heeft een correcte driehoek aangemaakt: " + driehoek, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
-		} else if(keuze.equals("Lijnstuk")){
-			LijnStuk lijnstuk = inputLijnStuk();
-			if(lijnstuk == null) return;
-			JOptionPane.showMessageDialog(null, "U heeft een correcte lijnstuk aangemaakt: " + lijnstuk, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
-		}
+		try{
+			if(keuze.equals("Cirkel")){
+				Cirkel cirkel = inputCirkel();
+				if(cirkel == null) return;
+				tekening.voegToe(cirkel);
+				JOptionPane.showMessageDialog(null, "U heeft een correcte cirkel aangemaakt: " + cirkel, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
+			} else if(keuze.equals("Rechthoek")){
+				Rechthoek rechthoek = inputRechthoek();
+				if(rechthoek == null) return;
+				tekening.voegToe(rechthoek);
+				JOptionPane.showMessageDialog(null, "U heeft een correcte rechthoek aangemaakt: " + rechthoek, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
+			} else if(keuze.equals("Driehoek")){
+				Driehoek driehoek = inputDriehoek();
+				if(driehoek == null) return;
+				tekening.voegToe(driehoek);
+				JOptionPane.showMessageDialog(null, "U heeft een correcte driehoek aangemaakt: " + driehoek, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
+			} else if(keuze.equals("Lijnstuk")){
+				LijnStuk lijnstuk = inputLijnStuk();
+				if(lijnstuk == null) return;
+				tekening.voegToe(lijnstuk);
+				JOptionPane.showMessageDialog(null, "U heeft een correcte lijnstuk aangemaakt: " + lijnstuk, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
+			}
+		} catch (DomainException e) {JOptionPane.showMessageDialog(null, e.getMessage());}
 	}
 	
 	public LijnStuk inputLijnStuk(){
@@ -133,19 +138,19 @@ public class PictionaryUi {
 	
 	public Cirkel inputCirkel(){
 		Cirkel cirkel = null;
+		Punt middelpunt = inputPunt();
+		if(middelpunt == null) return null;
 		
 		while(cirkel == null){
 			try{
-				Punt middelpunt = inputPunt();
-				if(middelpunt == null) return null;
 				
 				String input = inputNumber("Radius van de cirkel:");
 				if(input == null) return null;
-				cirkel = new Cirkel(middelpunt, Integer.parseInt(input));			
 			} catch (DomainException e){
 				JOptionPane.showMessageDialog(null, e.getMessage());
 			}			
 		}
+		cirkel = new Cirkel(middelpunt, Integer.parseInt(input));			
 		
 		return cirkel;
 	}

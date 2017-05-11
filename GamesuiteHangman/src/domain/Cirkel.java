@@ -33,10 +33,13 @@ public class Cirkel extends Vorm{
 	}
 
 	public void setRadius(int radius) {
-		if (radius <= 0){
+		if (!isValidRadius(radius)){
 			throw new DomainException("Straal mag niet negatief zijn");
 		}
 		this.radius = radius;
+	}
+	public static boolean isValidRadius(int radius){
+		return radius >0;
 	}
 
 	// Functies

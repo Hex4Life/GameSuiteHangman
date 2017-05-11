@@ -22,12 +22,12 @@ public class Rechthoek extends Vorm{
 	}
 
 	private void setBreedte(int breedte) {
-		if (breedte <= 0) throw new DomainException("De breedte mag niet negatief zijn.");
+		if (!isValidBreedte(breedte)) throw new DomainException("De breedte mag niet negatief zijn.");
 		this.breedte = breedte;
 	}
 
 	private void setHoogte(int hoogte) {
-		if (hoogte <= 0) throw new DomainException("De hoogte mag niet negatief zijn.");
+		if (!isValidHoogte(hoogte)) throw new DomainException("De hoogte mag niet negatief zijn.");
 		this.hoogte = hoogte;
 	}
 	
@@ -41,6 +41,12 @@ public class Rechthoek extends Vorm{
 		}
 		
 		this.linkerBovenhoek = linkerBovenhoek;
+	}
+	public static boolean isValidBreedte(int breedte){
+		return breedte > 0;
+	}
+	public static boolean isValidHoogte(int hoogte){
+		return hoogte > 0;
 	}
 	
 	@Override
