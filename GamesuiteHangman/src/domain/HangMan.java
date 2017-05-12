@@ -62,7 +62,6 @@ public class HangMan {
 			getTekening().zetVolgendeZichtbaar();
 			if(getTekening().getAantalOnzichtbare() == 0) status = GameStatus.VERLOREN;
 		}
-		
 		return hit;
 	}
 	

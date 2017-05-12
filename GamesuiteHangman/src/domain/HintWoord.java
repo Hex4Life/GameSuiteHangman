@@ -55,9 +55,4 @@ public class HintWoord {
 		}
 		return true;
 	}
-	
-	
-	
-	
-	
 }

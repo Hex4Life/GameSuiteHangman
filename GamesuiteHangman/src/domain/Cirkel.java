@@ -8,7 +8,6 @@ public class Cirkel extends Vorm{
 	private int radius;
 	
 	public Cirkel(Punt middelpunt, int radius) {
-		
 		setMiddelpunt(middelpunt);
 		setRadius(radius);
 	}
@@ -38,6 +37,7 @@ public class Cirkel extends Vorm{
 		}
 		this.radius = radius;
 	}
+	
 	public static boolean isValidRadius(int radius){
 		return radius >0;
 	}
@@ -49,14 +49,10 @@ public class Cirkel extends Vorm{
 			Omhullende omh = getOmhullende();
 			g.drawOval(omh.getMinimumX(), omh.getMinimumY(), omh.getBreedte(), omh.getHoogte());			
 		}
-
 	}
+	
 	@Override
 	public boolean equals(Object o) {
-		if(o == null){
-			return false;
-		}
-		
 		if(o instanceof Cirkel){
 			Cirkel cirkel = (Cirkel) o;
 			
@@ -65,6 +61,7 @@ public class Cirkel extends Vorm{
 		
 		return false;
 	}
+	
 	@Override
 	public String toString() {
 		return "Cirkel: middelpunt: " + this.getMiddelpunt().toString() +" - straal: " + this.getRadius() + "\n" + super.toString(); 
@@ -72,11 +69,9 @@ public class Cirkel extends Vorm{
 
 	@Override
 	public Omhullende getOmhullende() {
-		
 		int radius = this.getRadius();
 		int x = this.getMiddelpunt().getX();
 		int y = this.getMiddelpunt().getY();
-		
 		
 		int linkerBovenHoekX = x - radius;
 		int linkerBovenHoekY = y - radius;
@@ -85,14 +80,6 @@ public class Cirkel extends Vorm{
 		
 		Omhullende omhullende = new Omhullende(linkerBovenHoek, radius*2, radius*2);
 		
-		
 		return omhullende;
-		
-		
-	
 	}	
-	
-	
-	
-	
 }
