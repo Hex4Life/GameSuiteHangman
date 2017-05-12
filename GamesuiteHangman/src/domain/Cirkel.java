@@ -53,10 +53,6 @@ public class Cirkel extends Vorm{
 	}
 	@Override
 	public boolean equals(Object o) {
-		if(o == null){
-			return false;
-		}
-		
 		if(o instanceof Cirkel){
 			Cirkel cirkel = (Cirkel) o;
 			
