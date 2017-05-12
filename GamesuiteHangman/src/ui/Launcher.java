@@ -33,8 +33,6 @@ public class Launcher {
 			PictionaryUi ui = new PictionaryUi(speler);
 			ui.showMenu();
 		}
-		
-		System.exit(0);
 	}
 	
 	private static String inputNaamSpeler(){

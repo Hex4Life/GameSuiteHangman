@@ -152,10 +152,10 @@ public class PictionaryUi {
 		do{
 			String input = inputNumber(errMsg + "Hoogte van de rechthoek:");
 			if(input == null) return null;			
-			breedte = Integer.parseInt(input);
+			hoogte = Integer.parseInt(input);
 			
 			errMsg = "Ongeldige hoogte voor rechthoek\n\n";
-		} while(!Rechthoek.isValidBreedte(breedte));
+		} while(!Rechthoek.isValidHoogte(hoogte));
 		
 		
 		return new Rechthoek(linkerbovenhoek, breedte, hoogte);

@@ -28,7 +28,7 @@ public class Omhullende {
 	}
 
 	public void setBreedte(int breedte) {
-		if(breedte < 0) throw new DomainException("De breedte mag niet nul of negatief zin.");
+		if(breedte < 0) throw new DomainException("De breedte mag niet nul of negatief zijn.");
 		this.breedte = breedte;
 	}
 	
@@ -37,7 +37,7 @@ public class Omhullende {
 	}
 
 	public void setHoogte(int hoogte) {
-		if(hoogte < 0) throw new DomainException("De hoogte mag niet nul of negatief zin.");
+		if(hoogte < 0) throw new DomainException("De hoogte mag niet nul of negatief zijn.");
 		this.hoogte = hoogte;
 	}
 	

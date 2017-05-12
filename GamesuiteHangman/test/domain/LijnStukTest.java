@@ -12,10 +12,8 @@ public class LijnStukTest {
 	private Punt punt2 = new Punt(190, 30);
 	private Punt zelfdeAlsPunt2 = new Punt(190, 30);
 	
-	private Punt punt3 = new Punt(2,2);
-	private Punt punt4 = new Punt(5,4);
-	private Punt punt5 = new Punt(2,5);
-	private Punt punt6 = new Punt(4,2);
+	private Punt punt3 = new Punt(-5,2);
+	private Punt punt4 = new Punt(2,4);
 	
 
 	@Test
@@ -55,47 +53,10 @@ public class LijnStukTest {
 		assertTrue(lijnstuk.equals(lijnstuk2));
 	}
 	@Test
-	public void omhullende_is_juist_als_startpunt_is_linkerbovenhoek(){
-		
+	public void omhullende_is_juist(){
 		LijnStuk lijnstuk = new LijnStuk(punt3, punt4);
 		
-		assertTrue(punt3.equals(lijnstuk.getOmhullende().getLinkerBovenhoek()));
-		
-		
-		
-	}
-	
-	@Test
-	public void omhullende_is_juist_als_startpunt_is_linkeronderhoek(){
-		
-		LijnStuk lijnstuk = new LijnStuk(punt5, punt6);
-		
-		assertTrue(punt3.equals(lijnstuk.getOmhullende().getLinkerBovenhoek()));
-		
-		
-		
-	}
-	
-	@Test
-	public void omhullende_is_juist_als_startpunt_is_rechterbovenhoek(){
-		
-		LijnStuk lijnstuk = new LijnStuk(punt6, punt5);
-		
-		assertTrue(punt3.equals(lijnstuk.getOmhullende().getLinkerBovenhoek()));
-		
-		
-		
-	}
-	
-	@Test
-	public void omhullende_is_juist_als_startpunt_is_rechteronderhoek(){
-		
-		LijnStuk lijnstuk = new LijnStuk(punt4, punt3);
-		
-		assertTrue(punt3.equals(lijnstuk.getOmhullende().getLinkerBovenhoek()));
-		
-		
-		
+		assertEquals(new Omhullende(new Punt(-5, 2), 7, 2), lijnstuk.getOmhullende());	
 	}
 }
 	
