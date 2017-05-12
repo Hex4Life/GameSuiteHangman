@@ -26,6 +26,21 @@ public class PictionaryUi {
 		if(naam == null) return;
 		tekening = new Tekening(naam);
 		
+		boolean running = true;
+		
+		while(running){
+			String keuze = JOptionPane.showInputDialog("Wat wil je doen:\n\n1. Vorm maken\n2. Tekening tonen\n\n0. Stoppen");
+			if(keuze == null) return;
+
+			switch(keuze){
+				case "0" : running = false; break;
+				case "1" : vormMaken(); break;
+				case "2" : toonTekening(); break;
+				default : JOptionPane.showMessageDialog(null, "Ongeldige input");
+			}
+		}
+		
+		System.exit(0);
 	}
 	
 	public String inputNaamTekening(){
@@ -41,6 +56,12 @@ public class PictionaryUi {
 		return input;
 	}
 	
+	private void toonTekening(){
+		GameHoofdScherm scherm = new GameHoofdScherm(speler.getNaam(), tekening);
+		scherm.setVisible(true);
+		scherm.teken();
+	}
+	
 	public void vormMaken(){
 		Object keuze = JOptionPane.showInputDialog(null, "Wat wilt u tekenen", "input", JOptionPane.INFORMATION_MESSAGE, null, shapes, null);
 		
@@ -50,22 +71,22 @@ public class PictionaryUi {
 				Cirkel cirkel = inputCirkel();
 				if(cirkel == null) return;
 				tekening.voegToe(cirkel);
-				JOptionPane.showMessageDialog(null, "U heeft een correcte cirkel aangemaakt: " + cirkel, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "U heeft een correcte cirkel aangemaakt:\n" + cirkel, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
 			} else if(keuze.equals("Rechthoek")){
 				Rechthoek rechthoek = inputRechthoek();
 				if(rechthoek == null) return;
 				tekening.voegToe(rechthoek);
-				JOptionPane.showMessageDialog(null, "U heeft een correcte rechthoek aangemaakt: " + rechthoek, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "U heeft een correcte rechthoek aangemaakt:\n" + rechthoek, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
 			} else if(keuze.equals("Driehoek")){
 				Driehoek driehoek = inputDriehoek();
 				if(driehoek == null) return;
 				tekening.voegToe(driehoek);
-				JOptionPane.showMessageDialog(null, "U heeft een correcte driehoek aangemaakt: " + driehoek, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "U heeft een correcte driehoek aangemaakt:\n" + driehoek, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
 			} else if(keuze.equals("Lijnstuk")){
 				LijnStuk lijnstuk = inputLijnStuk();
 				if(lijnstuk == null) return;
 				tekening.voegToe(lijnstuk);
-				JOptionPane.showMessageDialog(null, "U heeft een correcte lijnstuk aangemaakt: " + lijnstuk, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "U heeft een correct lijnstuk aangemaakt:\n" + lijnstuk, speler.getNaam(), JOptionPane.INFORMATION_MESSAGE);
 			}
 		} catch (DomainException e) {JOptionPane.showMessageDialog(null, e.getMessage());}
 	}
@@ -75,10 +96,10 @@ public class PictionaryUi {
 		
 		while(lijnstuk == null){
 			try{
-				Punt punt1 = inputPunt();
+				Punt punt1 = inputPunt("StartPunt van het lijnstuk:");
 				if(punt1 == null) return null;
 				
-				Punt punt2 = inputPunt();
+				Punt punt2 = inputPunt("EindPunt van het lijnstuk:");
 				if(punt2 == null) return null;
 				
 				lijnstuk = new LijnStuk(punt1, punt2);
@@ -95,13 +116,13 @@ public class PictionaryUi {
 		
 		while(driehoek == null){
 			try{
-				Punt hoek1 = inputPunt();
+				Punt hoek1 = inputPunt("Punt 1 van de driehoek:");
 				if(hoek1 == null) return null;
 				
-				Punt hoek2 = inputPunt();
+				Punt hoek2 = inputPunt("Punt 2 van de driehoek:");
 				if(hoek2 == null) return null;
 				
-				Punt hoek3 = inputPunt();
+				Punt hoek3 = inputPunt("Punt 3 van de driehoek:");
 				if(hoek3 == null) return null;
 				
 				driehoek = new Driehoek(hoek1, hoek2, hoek3);
@@ -114,50 +135,55 @@ public class PictionaryUi {
 	}
 	
 	public Rechthoek inputRechthoek(){
-		Rechthoek rechthoek = null;
+		Punt linkerbovenhoek = inputPunt("Linkerboven hoek van de rechthoek:");
+		if(linkerbovenhoek == null) return null;
+
+		int breedte = 0;
+		String errMsg = "";
+		do{
+			String input = inputNumber(errMsg + "Breedte van de rechthoek:");
+			if(input == null) return null;
+			breedte = Integer.parseInt(input);
+			
+			errMsg = "Ongeldige breedte voor rechthoek\n\n";
+		} while(!Rechthoek.isValidBreedte(breedte));
 		
-		while(rechthoek == null){
-			try{
-				Punt linkerbovenhoek = inputPunt();
-				if(linkerbovenhoek == null) return null;
-				
-				String breedte = inputNumber("Breedte van de rechthoek:");
-				if(breedte == null) return null;
-				
-				String hoogte = inputNumber("Hoogte van de rechthoek:");
-				if(hoogte == null) return null;
-				
-				rechthoek = new Rechthoek(linkerbovenhoek, Integer.parseInt(breedte), Integer.parseInt(hoogte));
-			} catch (DomainException e){
-				JOptionPane.showMessageDialog(null, e.getMessage());
-			}
-		}
+		int hoogte = 0;
+		errMsg = "";
+		do{
+			String input = inputNumber(errMsg + "Hoogte van de rechthoek:");
+			if(input == null) return null;			
+			breedte = Integer.parseInt(input);
+			
+			errMsg = "Ongeldige hoogte voor rechthoek\n\n";
+		} while(!Rechthoek.isValidBreedte(breedte));
 		
-		return rechthoek;
+		
+		return new Rechthoek(linkerbovenhoek, breedte, hoogte);
 	}
 	
 	public Cirkel inputCirkel(){
-		Cirkel cirkel = null;
-		Punt middelpunt = inputPunt();
+		Punt middelpunt = inputPunt("Middelpunt van de cirkel:");
 		if(middelpunt == null) return null;
 		
-		while(cirkel == null){
-			try{
-				
-				String input = inputNumber("Radius van de cirkel:");
-				if(input == null) return null;
-			} catch (DomainException e){
-				JOptionPane.showMessageDialog(null, e.getMessage());
-			}			
-		}
-		cirkel = new Cirkel(middelpunt, Integer.parseInt(input));			
+		int radius = 0;
+		String errMsg = "";
+		do {
+			String input = inputNumber(errMsg + "Radius van de cirkel:");
+			if(input == null) return null;
+			radius = Integer.parseInt(input);
+			
+			errMsg = "Ongeldige straal voor cirkel\n\n";
+		} while(!Cirkel.isValidRadius(radius));
 		
-		return cirkel;
+		return new Cirkel(middelpunt, radius);
 	}
 	
-	public Punt inputPunt(){
-		String input1 = inputNumber("x coordinaat van het punt:");
-		String input2 = inputNumber("y coordinaat van het punt:");
+	public Punt inputPunt(String msg){
+		String input1 = inputNumber(msg + "\nx coordinaat van het punt:");
+		if(input1 == null) return null;
+		String input2 = inputNumber(msg + "\ny coordinaat van het punt:");
+		if(input2 == null) return null;
 		
 		return new Punt(Integer.parseInt(input1), Integer.parseInt(input2));
 	}
