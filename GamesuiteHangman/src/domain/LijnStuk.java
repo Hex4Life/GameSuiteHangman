@@ -71,24 +71,17 @@ public class LijnStuk extends Vorm{
 				
 				Omhullende omhullende = new Omhullende(linkerBovenHoek, breedte, hoogte);
 				return omhullende;
-
-			}
-			
-			//startY > eeindY
-			else{ 
+			}else{ 
+				//startY > eindY
 				Punt linkerBovenHoek = new Punt(eindX - startX , eindY);
 				int hoogte = startY - eindY;
 				int breedte = eindX - startX;
 				
-				
 				Omhullende omhullende = new Omhullende(linkerBovenHoek, breedte, hoogte);
 				return omhullende;
-
 			}
-		}
-		
-		//startX > eindX
-		else{
+		}else{
+			//startX > eindX
 			if(startY > eindY){
 				Punt linkerBovenHoek = new Punt(eindX, eindY);
 				
@@ -97,24 +90,15 @@ public class LijnStuk extends Vorm{
 				
 				Omhullende omhullende = new Omhullende(linkerBovenHoek, breedte, hoogte);
 				return omhullende;
-
-			}
-			else{
-				
+			}else{
 				Punt linkerBovenHoek = new Punt(startX -eindX, startY);
 				
 				int hoogte = eindY - startY;
 				int breedte = startX-eindX;
 			
-				
 				Omhullende omhullende = new Omhullende(linkerBovenHoek, breedte, hoogte);
-				return omhullende;
-
-				
+				return omhullende;				
 			}
-			
 		}
-	
-			}
-	
+	}
 }

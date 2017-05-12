@@ -22,7 +22,6 @@ public class Driehoek extends Vorm {
 				* (hoekPunt3.getY() - hoekPunt1.getY())) == ((hoekPunt3.getX() - hoekPunt1.getX())
 						* (hoekPunt2.getY() - hoekPunt1.getY()))) {
 			throw new DomainException("Hoekpunten mogen niet op 1 rechte liggen.");
-
 		}
 		this.hoekPunt1 = hoekPunt1;
 		this.hoekPunt2 = hoekPunt2;
@@ -48,7 +47,6 @@ public class Driehoek extends Vorm {
 			int[] yPoints = { getHoekPunt1().getY(), getHoekPunt2().getY(), getHoekPunt3().getY() };
 			g.drawPolygon(xPoints, yPoints, 3);			
 		}
-
 	}
 
 	@Override
@@ -68,9 +66,7 @@ public class Driehoek extends Vorm {
 			if (lijsthoekpunten1.containsAll(lijsthoekpunten2) && lijsthoekpunten2.containsAll(lijsthoekpunten1)) {
 				return true;
 			}
-
 		}
-
 		return false;
 	}
 
@@ -82,7 +78,6 @@ public class Driehoek extends Vorm {
 
 	@Override
 	public Omhullende getOmhullende() {
-
 		int linksX = 0;
 		int rechtsX = 0;
 		int bovenY = 0;
@@ -102,9 +97,7 @@ public class Driehoek extends Vorm {
 				linksX = hoekPunt1X;
 			} else {
 				linksX = hoekPunt3X;
-
 			}
-
 		}
 
 		else if (hoekPunt2X <= hoekPunt3X ) {
@@ -119,9 +112,7 @@ public class Driehoek extends Vorm {
 				rechtsX = hoekPunt1X;
 			} else {
 				rechtsX = hoekPunt3X;
-
 			}
-
 		}
 
 		else if (hoekPunt2X >= hoekPunt3X) {
@@ -136,9 +127,7 @@ public class Driehoek extends Vorm {
 				onderY = hoekPunt1Y;
 			} else {
 				onderY = hoekPunt3Y;
-
 			}
-
 		}
 
 		else if (hoekPunt2Y >= hoekPunt3Y) {
@@ -154,9 +143,7 @@ public class Driehoek extends Vorm {
 				bovenY = hoekPunt1Y;
 			} else {
 				bovenY = hoekPunt3Y;
-
 			}
-
 		}
 
 		else if (hoekPunt2Y <= hoekPunt3Y) {
@@ -172,7 +159,5 @@ public class Driehoek extends Vorm {
 		Omhullende omhullende = new Omhullende(linkerBovenHoek, breedte, hoogte);
 
 		return omhullende;
-
 	}
-
 }
