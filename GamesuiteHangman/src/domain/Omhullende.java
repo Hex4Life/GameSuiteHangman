@@ -59,6 +59,7 @@ public class Omhullende {
 	}
 	
 	//equals
+	@Override
 	public boolean equals(Object o){
 		if(o instanceof Omhullende){
 			Omhullende omhullende = (Omhullende)o;
@@ -68,6 +69,9 @@ public class Omhullende {
 		return false;
 	}
 	
-	
+	@Override
+	public String toString(){
+		return "Omhullende: " + getLinkerBovenhoek() + " - " + getBreedte() + " - " + getHoogte();
+	}
 	
 }

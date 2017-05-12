@@ -90,7 +90,7 @@ public class HangmanPaneel extends JPanel {
 			while(running){
 				input = JOptionPane.showInputDialog(msg + "\nNog een keer? (y/n)");
 				
-				if(input == null || input.equals('n')) System.exit(0);
+				if(input == null || input.equals("n")) System.exit(0);
 				if(input.equals("y")){
 					getSpel().reset();
 					reset();

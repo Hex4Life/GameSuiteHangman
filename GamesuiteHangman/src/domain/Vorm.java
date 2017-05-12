@@ -20,4 +20,9 @@ public abstract class Vorm implements Drawable {
 		this.zichtbaar = zichtbaar;
 	}
 	
+	@Override
+	public String toString(){
+		return getOmhullende().toString();
+	}
+	
 }

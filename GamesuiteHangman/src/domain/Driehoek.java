@@ -77,7 +77,7 @@ public class Driehoek extends Vorm {
 	@Override
 	public String toString() {
 		return "Driehoek: hoekpunt1: " + this.hoekPunt1.toString() + " - hoekpunt2: " + this.hoekPunt2.toString()
-				+ " hoekpunt3: " + this.hoekPunt3.toString();
+				+ " hoekpunt3: " + this.hoekPunt3.toString() + "\n" + super.toString();
 	}
 
 	@Override

@@ -67,8 +67,7 @@ public class Cirkel extends Vorm{
 	}
 	@Override
 	public String toString() {
-		return "Cirkel: middelpunt: " + this.getMiddelpunt().toString() +" - straal: " + this.getRadius() 
-		+ "Omhullende: " + this.getOmhullende().toString() +" - "+ this.getRadius()*2 +" - " + this.getRadius()*2; 
+		return "Cirkel: middelpunt: " + this.getMiddelpunt().toString() +" - straal: " + this.getRadius() + "\n" + super.toString(); 
 	}
 
 	@Override
