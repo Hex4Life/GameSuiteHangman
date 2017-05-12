@@ -12,6 +12,10 @@ public class WoordenLezer {
 	private String bestandsNaam;
 	
 	public WoordenLezer(String bestandsNaam){
+		if(bestandsNaam == null || bestandsNaam.trim().isEmpty()){
+			throw new DbException("geen geldige bestandsnaam");
+		}
+		
 		this.bestandsNaam = bestandsNaam;
 	}
 	

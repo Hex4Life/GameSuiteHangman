@@ -81,6 +81,13 @@ public class DriehoekTest {
 		assertTrue(drieHoek1.equals(drieHoek2));
 	}
 	
+	@Test
+	public void equals_geeft_true_terug_als_alle_hoekpunten_gelijk_zijn_in_andere_volgorde() {
+		Driehoek drieHoek1 = new Driehoek(punt1, punt2, punt3);
+		Driehoek drieHoek2 = new Driehoek(zelfdeAlsPunt2, zelfdeAlsPunt1, zelfdeAlsPunt3);
+		
+		assertTrue(drieHoek1.equals(drieHoek2));
+	}
 	
 	@Test
 	public void omhullende_is_juist(){
@@ -90,9 +97,6 @@ public class DriehoekTest {
 		int hoogte = 3;
 		Omhullende omhullende = new Omhullende(linkerbovenhoek, breedte, hoogte);
 		
-		assertTrue(omhullende.equals(driehoek.getOmhullende()));
-		
-		
+		assertTrue(omhullende.equals(driehoek.getOmhullende()));	
 	}
-
 }

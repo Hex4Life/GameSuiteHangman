@@ -3,14 +3,14 @@ package domain;
 public class HangMan {
 	
 	private Speler speler;
-	private TekenHangMan tekening;
 	private WoordenLijst woordenlijst;
+	private TekenHangMan tekening;
 	private HintWoord currentHintWoord;
 	private GameStatus status;
 	
 	public HangMan(Speler speler, WoordenLijst woordenLijst){
-		this.speler = speler;
-		this.woordenlijst = woordenLijst;
+		setSpeler(speler);
+		setWoordenLijst(woordenLijst);
 		tekening = new TekenHangMan();
 		reset();
 	}
@@ -25,8 +25,28 @@ public class HangMan {
 		return currentHintWoord.toString();
 	}
 	
+	private void setWoordenLijst(WoordenLijst lijst){
+		if(lijst == null){
+			throw new DomainException("WoordenLijst kan niet null zijn voor HangMan");
+		}
+		
+		if(lijst.getAantalWoorden() == 0){
+			throw new DomainException("WoordenLijst kan niet leeg zijn voor HangMan");
+		}
+		
+		this.woordenlijst = lijst;
+	}
+	
 	public Speler getSpeler(){
 		return speler;
+	}
+	
+	private void setSpeler(Speler speler){
+		if(speler == null){
+			throw new DomainException("Speler kan niet null zijn voor HangMan.");
+		}
+		
+		this.speler = speler;
 	}
 	
 	public TekenHangMan getTekening(){

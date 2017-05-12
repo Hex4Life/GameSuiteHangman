@@ -16,6 +16,7 @@ public class PictionaryUi {
 	private Speler speler;
 	private Tekening tekening;
 	private Object[] shapes = {"Cirkel", "Driehoek", "Lijnstuk", "Rechthoek"};
+	private GameHoofdScherm scherm;
 	
 	public PictionaryUi(Speler speler){
 		this.speler = speler;
@@ -25,6 +26,7 @@ public class PictionaryUi {
 		String naam = inputNaamTekening();
 		if(naam == null) return;
 		tekening = new Tekening(naam);
+		scherm = new GameHoofdScherm(speler.getNaam(), tekening);
 		
 		boolean running = true;
 		
@@ -39,8 +41,6 @@ public class PictionaryUi {
 				default : JOptionPane.showMessageDialog(null, "Ongeldige input");
 			}
 		}
-		
-		System.exit(0);
 	}
 	
 	public String inputNaamTekening(){
@@ -57,7 +57,6 @@ public class PictionaryUi {
 	}
 	
 	private void toonTekening(){
-		GameHoofdScherm scherm = new GameHoofdScherm(speler.getNaam(), tekening);
 		scherm.setVisible(true);
 		scherm.teken();
 	}

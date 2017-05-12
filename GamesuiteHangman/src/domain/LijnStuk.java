@@ -115,6 +115,6 @@ public class LijnStuk extends Vorm{
 			
 		}
 	
-			}
+	}
 	
 }

@@ -60,17 +60,26 @@ public class HangmanPaneel extends JPanel {
 	}
 	
 	private void handleInput(){
-		String input = letter.getText();
-		char guess = '\u0000';
-		if(input.length() > 0){
-			guess = input.charAt(0);
+		char guess = extractChar(letter.getText());
+		if(guess == '\u0000'){
+			JOptionPane.showMessageDialog(null, "Ongeldig karakter", "error", JOptionPane.ERROR_MESSAGE);
+			reset();
+			return;
 		}
 		
 		getSpel().raad(guess);
-
+		
 		reset();
 		
 		handleEndOfGame();
+	}
+	
+	private char extractChar(String msg){
+		if(!msg.matches("^[a-zA-Z]$")){
+			return '\u0000';
+		}
+		
+		return msg.charAt(0);
 	}
 	
 	private void handleEndOfGame(){

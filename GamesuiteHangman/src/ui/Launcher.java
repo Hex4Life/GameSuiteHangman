@@ -2,6 +2,7 @@ package ui;
 
 import javax.swing.JOptionPane;
 
+import db.DbException;
 import db.WoordenLezer;
 import domain.Speler;
 
@@ -22,14 +23,18 @@ public class Launcher {
 		if(keuze == null) return;
 		
 		if (keuze.equals("HangMan")) {
-			HangmanUi ui = new HangmanUi(speler, new WoordenLezer("hangman.txt").lees());
-			ui.showMenu();
-		}
-		else if (keuze.equals("Pictionary")) {
+			try{
+				HangmanUi ui = new HangmanUi(speler, new WoordenLezer("hangman.txt").lees());
+				ui.showMenu();
+			} catch (DbException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
+			}
+		} else if (keuze.equals("Pictionary")) {
 			PictionaryUi ui = new PictionaryUi(speler);
 			ui.showMenu();
 		}
 		
+		System.exit(0);
 	}
 	
 	private static String inputNaamSpeler(){
